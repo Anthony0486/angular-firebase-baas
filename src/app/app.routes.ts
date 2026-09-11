@@ -12,6 +12,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home').then((m) => m.Home),
   },
   {
+    path: 'observables',
+    loadComponent: () => import('./pages/observables/observables').then((m) => m.Observables),
+  },
+  {
     path: 'register',
     loadComponent: () => import('./pages/auth/register/register').then((m) => m.Register),
   },

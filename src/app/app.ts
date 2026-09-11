@@ -5,10 +5,11 @@ import { Header } from './layout/header/header'
 import { Register } from './pages/auth/register/register'
 import { Dashboard } from './pages/auth/dashboard/dashboard'
 import { Login } from './pages/auth/login/login'
+import { Observables } from './pages/observables/observables'
 
 
 @Component({
-  imports: [RouterOutlet, Home, Header, Register, Dashboard, Login],
+  imports: [RouterOutlet, Home, Header, Register, Dashboard, Login, Observables],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
