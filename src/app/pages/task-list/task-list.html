@@ -1,0 +1,52 @@
+<div class="max-w-xl mx-auto p-6 space-y-6">
+
+ <!-- En-tête -->
+ <div class="text-center space-y-1">
+   <h1 class="text-3xl font-bold text-primary">Ma Liste de Tâches</h1>
+   <p class="text-sm text-base-content/70">Synchronisée en temps réel avec Firebase</p>
+ </div>
+
+ <!-- Formulaire d'ajout -->
+ <div class="flex gap-2">
+   <input
+     type="text"
+     placeholder="Ajouter une nouvelle tâche..."
+     class="input input-bordered w-full"
+     [ngModel]="newTaskTitle()"
+     (ngModelChange)="newTaskTitle.set($event)"
+     (keyup.enter)="onAddTask()"
+   />
+   <button class="btn btn-primary" (click)="onAddTask()">
+     Ajouter
+   </button>
+ </div>
+
+ <!-- Liste des tâches -->
+ <div class="space-y-3">
+   @for (task of tasks(); track task.id) {
+     <div class="flex items-center justify-between p-4 bg-base-100 border border-base-300 rounded-box shadow-sm">
+       <span
+         class="font-medium"
+         [class.line-through]="task.completed"
+         [class.opacity-50]="task.completed"
+       >
+         {{ task.title }}
+       </span>
+
+       <!-- Bouton de suppression -->
+       <button
+         type="button"
+         class="btn btn-ghost btn-xs text-error"
+         (click)="onDeleteTask(task.id)"
+       >
+         Supprimer
+       </button>
+     </div>
+   } @empty {
+     <div class="alert alert-info text-center justify-center">
+       <span>Aucune tâche pour le moment. Ajoutez-en une !</span>
+     </div>
+   }
+ </div>
+
+</div>
