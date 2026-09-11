@@ -5,10 +5,10 @@ import { routes } from './app.routes';
 // 1. Imports du SDK Firebase officiel
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
-
+import { getAuth } from 'firebase/auth';
 // 2. Import des Tokens d'injection de @angular/fire !
 import { Database } from '@angular/fire/database';
-
+import { Auth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 // Initialisation synchrone de Firebase au démarrage de l'application
@@ -21,5 +21,7 @@ export const appConfig: ApplicationConfig = {
 
    // On associe les tokens @angular/fire aux instances réelles
    { provide: Database, useValue: getDatabase(app) },
+   { provide: Auth, useValue: getAuth(app) },
  ],
 };
+
